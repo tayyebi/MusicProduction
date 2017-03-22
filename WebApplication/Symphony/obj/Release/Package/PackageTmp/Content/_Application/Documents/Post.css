@@ -1,0 +1,11 @@
+﻿.body img{
+    max-width:100%;
+}
+.group, .title, .date ,.subGroup{
+    text-align:center;
+    margin:0 auto 0 auto;
+    display:block;
+}
+.group, .subGroup{
+    display:none;
+}

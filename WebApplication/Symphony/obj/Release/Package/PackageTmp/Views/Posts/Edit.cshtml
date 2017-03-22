@@ -1,0 +1,20 @@
+﻿@model Post
+@{
+    ViewBag.Title = "ویرایش";
+}
+@Html.ActionLink("بازگشت", "Index")
+<form method="post" enctype="multipart/form-data">
+    <label for="Title">عنوان</label>
+    <input type="text" name="Title" value="@Model.عنوان" />
+
+    <label for="Abstract">چکیده</label>
+    <input type="text" name="Abstract" value="@Model.چکیده" />
+
+    <label for="body">متن</label>
+    <textarea name="Body">@Model.متن</textarea>
+
+    <label for="SubGroup">زیر گروه</label>
+    @Helpers.SubGroups("SubGroup")
+
+    <input type="submit" value="ارسال" />
+</form>

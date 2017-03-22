@@ -1,0 +1,24 @@
+﻿@model MusicProduction.Models.Product
+@{ 
+    ViewBag.Title = "ویرایش";
+}
+@Html.ActionLink("بازگشت", "Index")
+<form method="post" enctype="multipart/form-data">
+    <label for="Name">عنوان</label>
+    <input name="Name" value="@Model.محصول" />
+
+    <label for="Abstract">چکیده</label>
+    <input name="Abstract" value="@Model.چکیده" />
+
+    <label for="Description">توضیحات</label>
+    <textarea name="Description" value="@Model.توضیحات"></textarea>
+
+    <label for="SubGroup">زیر گروه</label>
+    @Helpers.SubGroups("SubGroup")
+
+    <label for="">تصویر</label>
+    <p>اگر قصد تغییر تصویر محصول را ندارید، آن را بدون تغییر رها کنید.</p>
+    <input name="Parvandeh" type="file" />
+
+    <input type="submit" value="ایجاد" />
+</form>

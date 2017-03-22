@@ -1,0 +1,16 @@
+﻿@model MusicProduction.Models.Post
+
+@if (Request.IsAjaxRequest())
+{
+    @Html.Raw(Model.متن)
+}
+else{
+    ViewBag.Title = Model.عنوان;
+    <h1 class="title">@Model.عنوان</h1>
+    <h2 class="group">@Model.گروه</h2>
+    <h3 class="subGroup">@Model.زیر_گروه</h3>
+    <span class="date">@Model.تاریخ</span>
+    <div class="body">
+        @Html.Raw(Model.متن)
+    </div>
+}

@@ -1,0 +1,9 @@
+﻿@model SubGroup
+@{
+    ViewBag.Title = "حذف";
+}
+@Html.ActionLink("بازگشت", "Index", new { group = HttpContext.Current.Request.QueryString["group"] })
+<form method="post">
+    <input readonly value="@Model.گروه - @Model.زیر_گروه" />
+    <input type="submit" value="حذف این گروه" />
+</form>

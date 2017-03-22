@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "محصول جدید";
+}
+<form method="post" enctype="multipart/form-data">
+    <label for="Name">عنوان</label>
+    <input name="Name" />
+
+    <label for="Abstract">چکیده</label>
+    <input name="Abstract" />
+
+    <label for="Description">توضیحات</label>
+    <textarea name="Description"></textarea>
+
+    <label for="SubGroup">زیر گروه</label>
+    @Helpers.SubGroups("SubGroup")
+
+    <label for="">تصویر</label>
+    <input name="Parvandeh" type="file" />
+
+    <input type="submit" value="ایجاد" />
+</form>

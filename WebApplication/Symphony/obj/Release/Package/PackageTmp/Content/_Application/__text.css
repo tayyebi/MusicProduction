@@ -1,0 +1,24 @@
+﻿h1, h2, h3, h4, h5, h6, legend, p, header, footer {
+    font-weight: normal;
+}
+
+    header h1, header h2 {
+        text-align: center;
+        display: block;
+        margin: 0 auto 0 auto;
+        text-shadow: 0 0 .5em #e5e5e5;
+    }
+    
+a {
+    text-decoration: none;
+    color: inherit;
+    border-width:.1em;
+    border-style:solid;
+    border-color:#00ffff;
+    border-radius:.1em;
+    padding:.3em;
+}
+a:hover, a:focus, a:active{
+    background-color:#00ffff;
+    color:black;
+}

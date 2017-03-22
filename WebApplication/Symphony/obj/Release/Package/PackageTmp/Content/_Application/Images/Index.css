@@ -1,0 +1,9 @@
+﻿@import url("../Files/Index.css");
+
+#Content div{
+    height: 20em;
+}
+#Content div img{
+    max-width: 12em;
+    max-height:15em;
+}

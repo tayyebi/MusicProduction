@@ -1,0 +1,27 @@
+﻿@{ 
+    ViewBag.Title = "سفارش محصول";
+}
+<form method="post">
+    <label for="Product">محصول خود را انتخاب کنید</label>
+    @Helpers.Products("Product")
+
+    <label for="Count">تعداد مورد نظر را انتخاب نمائید</label>
+    @Helpers.Count("Count")
+
+    <label for="FullName">نام و نام خانوادگی خود را وارد نمائید</label>
+    <input type="text" name="FullName" />
+
+    <label for="Email">پست الکترونیک خود را وارد نمائید</label>
+    <input type="text" name="Email" />
+
+    <label for="Mobile">شماره تلفن همراه خود را وارد نمائید</label>
+    <input type="text" name="Mobile" />
+
+    <label for="Address">آدرس پستی خود را وارد نمائید</label>
+    <input type="text" name="Address" />
+
+    <label for="Description">توضیحات لازم را ارائه فرمائید</label>
+    <input type="text" name="Description" />
+
+    <input type="submit" value="ثبت سفارش" />
+</form>

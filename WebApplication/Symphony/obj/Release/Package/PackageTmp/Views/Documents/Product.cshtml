@@ -1,0 +1,16 @@
+﻿@model MusicProduction.Models.Product
+@{ 
+    ViewBag.Title = Model.محصول ;
+}
+<h1 class="title">
+    @Model.محصول
+</h1>
+<h2 class="subGroup">
+    @Model.زیر_گروه
+</h2>
+<img class="thumb" src="~/Documents/Download/@Model.Image_Id" alt="@Model.چکیده" />
+<div class="description">
+    @Html.Raw(Model.توضیحات)
+</div>
+@Helpers.Slider(0, Model.Id)
+@Helpers.ViewPost(Model.SubGroup_Id)

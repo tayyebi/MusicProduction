@@ -1,0 +1,93 @@
+﻿@helper SubGroups(string Name)
+{
+    <select name="@Name">
+        @foreach (var item in MusicProduction.App_Code.HelpersClass.SubGroups())
+        {
+            <option value="@item.ValueMember">@item.DisplayMember</option>
+        }
+    </select>
+}
+@helper Products(string Name)
+{
+    <select name="@Name">
+        <option value="0">(هیچ کدام)</option>
+        @foreach (var item in MusicProduction.App_Code.HelpersClass.Products())
+        {
+            <option value="@item.ValueMember">@item.DisplayMember</option>
+        }
+    </select>
+}
+@helper Posts(string Name)
+{
+    <select name="@Name">
+        <option value="0">(هیچ کدام)</option>
+        @foreach (var item in MusicProduction.App_Code.HelpersClass.Posts())
+        {
+            <option value="@item.ValueMember">@item.DisplayMember</option>
+        }
+    </select>
+}
+@helper Slider(int PostId = 0, int ProductId = 0)
+{
+
+List<MusicProduction.Models.Image> imgs = new List<MusicProduction.Models.Image>();
+imgs = MusicProduction.App_Code.HelpersClass.Images(ProductId, PostId);
+
+    <ul class="rslides_tabs">
+        @foreach (var item in imgs)
+        {
+            <li><a href="#"><img src="~/Documents/Download/@item.File_Id"></a></li>
+        }
+    </ul>
+    <ul class="rslides">
+        @foreach (var item in imgs)
+        {
+            <li><img src="~/Documents/Download/@item.File_Id" alt="@item.توضیحات"></li>
+        }
+    </ul>
+}
+@helper ViewPost(int SubGroup = 0)
+{
+    <div class="posts">
+        <span>اخبار و مقالات</span>
+        @foreach (var item in MusicProduction.App_Code.HelpersClass.ViewPost(SubGroup))
+        {
+            <div class="post">
+                <a class="read" href="~/Documents/Post/@item.Id">
+                    <h2 class="title">@item.عنوان</h2>
+                </a>
+                <h3 class="date">@item.تاریخ</h3>
+                <div class="abstract">
+                    @item.چکیده
+                </div>
+            </div>
+        }
+    </div>
+}
+@helper ViewProduct()
+{
+    <div class="products">
+        <span>محصولات</span>
+        @foreach (var item in MusicProduction.App_Code.HelpersClass.ViewProduct())
+        {
+            <a class="product" href="~/Documents/Product/@item.Id">
+                <h2 class="name">@item.محصول</h2>
+                <h3 class="subGroup">@item.زیر_گروه</h3>
+                <img src="~/Documents/Download/@item.Image_Id" />
+            </a>
+        }
+    </div>
+}
+@helper Count(string Name)
+{
+    <select name="@Name">
+        @{
+            int i = 1;
+            while (i <= 20)
+            {
+                <option value="@i.ToString()">@i.ToString()</option>
+                i++;
+            }
+        }
+    </select>
+}

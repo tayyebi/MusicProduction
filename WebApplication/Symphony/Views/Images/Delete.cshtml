@@ -1,0 +1,9 @@
+﻿@model MusicProduction.Models.Image
+@{
+    ViewBag.Title = "حذف";
+}
+@Html.ActionLink("بازگشت", "Index")
+<form method="post">
+    <input value="@Model.عکس" readonly />
+    <input type="submit" value="حذف تصویر" />
+</form>

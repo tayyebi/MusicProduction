@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MusicProduction.Models.SubGroup>
+@{
+    ViewBag.Title = "زیر گروه ها";
+}
+
+@Html.ActionLink("بازگشت", "Index", "Groups")
+@Html.ActionLink("ایجاد", "Create", new { group = HttpContext.Current.Request.QueryString["group"] })
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.زیر_گروه)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.گروه)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.زیر_گروه)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.گروه)
+            </td>
+            <td>
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.Id, group = item.GroupId })
+                @Html.ActionLink("حذف", "Delete", new { id = item.Id, group = item.GroupId })
+            </td>
+        </tr>
+    }
+</table>

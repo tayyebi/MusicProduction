@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MusicProduction.Models.Product>
+@{
+    ViewBag.Title = "محصولات";
+}
+@Html.ActionLink("ایجاد", "Create", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.محصول)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.زیر_گروه)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.گروه)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.محصول)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.زیر_گروه)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.گروه)
+            </td>
+            <td>
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+                @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+                @Html.ActionLink("زیر گروه ها", "Index", new { controller = "SubGroups", group = item.Id })
+                @Html.ActionLink("تصویر ها", "Index", new { Post = item.Id, controller = "Images" }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+            </td>
+        </tr>
+    }
+</table>

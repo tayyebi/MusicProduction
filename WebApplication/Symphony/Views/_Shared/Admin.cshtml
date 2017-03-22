@@ -1,0 +1,19 @@
+﻿@{    
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+}
+@section header{
+<div class="Menu2">
+    @Html.ActionLink("گروه ها", "Index", "Groups")
+    @Html.ActionLink("پست ها", "Index", "Posts")
+    @Html.ActionLink("محصول ها", "Index", "Products")
+    @Html.ActionLink("تصویر ها", "Index", "Images")
+    @Html.ActionLink("فایل ها", "Index", "Files")
+    @Html.ActionLink("سفارش ها", "NewOrders", "Orders")
+</div>
+}
+@RenderBody()
+@section footer{
+    @MusicProduction.App_Code.About.ApplicationTitle
+    1394 © 2015
+    طراح و برنامه نویس: محمدرضا طیبی
+}

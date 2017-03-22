@@ -1,0 +1,35 @@
+﻿@model Order
+@{ 
+    ViewBag.Title = "مشاهده سفارش شماره " + Model.Id;
+}
+<label for="Product">محصول</label>
+@Html.DisplayFor(modelItem => modelItem.محصول)
+
+<label for="Product">مقدار</label>
+@Html.DisplayFor(modelItem => modelItem.مقدار)
+
+<label for="Product">نام و نام خانوادگی</label>
+@Html.DisplayFor(modelItem => modelItem.نام_و_نام_خانوادگی)
+
+<label for="Product">موبایل</label>
+@Html.DisplayFor(modelItem => modelItem.موبایل)
+
+<label for="Product">پست الکترونیک</label>
+@Html.DisplayFor(modelItem => modelItem.پست_الکترونیک)
+
+<label for="Product">آدرس</label>
+@Html.DisplayFor(modelItem => modelItem.آدرس)
+
+<label for="Product">توضیحات</label>
+@Html.DisplayFor(modelItem => modelItem.توضیحات)
+
+<form method="post">
+    <select name="Status">
+        <option value="0">تائید نشده</option>
+        <option value="1">تائید شده</option>
+    </select>
+    <input type="submit" value="اعلام" />
+</form>
+
+
+

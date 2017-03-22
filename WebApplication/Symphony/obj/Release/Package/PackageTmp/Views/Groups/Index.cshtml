@@ -1,0 +1,28 @@
+﻿@model IEnumerable<MusicProduction.Models.Group>
+
+@{
+    ViewBag.Title = "گروه ها";
+}
+@Html.ActionLink("ایجاد", "Create", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.عنوان)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.عنوان)
+            </td>
+            <td>
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+                @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+                @Html.ActionLink("زیر گروه ها", "Index", new { controller = "SubGroups", group = item.Id })
+            </td>
+        </tr>
+    }
+</table>

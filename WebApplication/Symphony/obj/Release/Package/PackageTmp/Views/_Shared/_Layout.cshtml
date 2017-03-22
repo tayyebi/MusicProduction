@@ -1,0 +1,201 @@
+﻿@{
+    string _Controller = null;
+    string _Action = null;
+    string _Id = null;
+    try
+    {
+        _Controller = ViewContext.RouteData.Values["controller"].ToString();
+        _Action = ViewContext.RouteData.Values["action"].ToString();
+        _Id = ViewContext.RouteData.Values["id"].ToString();
+    }
+    catch { }
+
+    string _ControllerJs = _Controller + ".js";
+    string _ActionJs = _Action + ".js";
+    string _IdJs = _Id + ".js";
+
+    string _ControllerCss = _Controller + ".css";
+    string _ActionCss = _Action + ".css";
+    string _IdCss = _Id + ".css";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="MRezaTayyebi" content="برنامه نویسی شده و توسعه داده شده توسط محمدرضا طیبی - 3860995243 - ایران" />
+    @RenderSection("Meta", required: false)
+    <title>@MusicProduction.App_Code.About.ApplicationTitle | @ViewBag.Title</title>
+
+    <link href="~/Content/Theme/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/_Application/_menu.css" rel="stylesheet" />
+    <link rel="stylesheet/less" href="~/Content/_Application/_Layout.less" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/_Application/_Layout.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/_Application/@_ControllerCss" />
+    @if (_ActionCss != ".css")
+    {
+        <link rel="stylesheet" type="text/css" href="~/Content/_Application/@_Controller/@_ActionCss" />
+        if (_IdCss != ".css")
+        {
+            <link rel="stylesheet" type="text/css" href="~/Content/_Application/@_Controller/@_Action/@_IdCss" />
+        }
+    }
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/modernizr.js"></script>
+
+    <script type="text/javascript">
+        /*با توجه به صرف وقت و هزینه در تهیه تمامی بخش های این نرم افزار، لطفا با ذکر نام توسعه دهنده (محمدرضا طیبی) از کد نرم افزار استفاده نمائید.*/
+        var Root = location.protocol.toLowerCase() + '//' + location.host.toLowerCase();
+        var URL = window.location.toString().toLowerCase().replace(Root + '/', '').replace(/([^:]\/)\/+/g, '$1').replace(/^\//, '').replace(/^\/|\/$/g, '').toLowerCase().split('/');
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var QueryString_Id = getParameterByName('id');
+    </script>
+    <script type="text/javascript" src="~/Scripts/slider/responsiveslides.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/froala_editor.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/froala_style.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/code_view.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/draggable.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/colors.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/emoticons.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/image.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/line_breaker.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/table.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/char_counter.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/video.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/fullscreen.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/file.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/quick_insert.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/help.css">
+    <link rel="stylesheet" href="~/Scripts/floara/css/plugins/special_characters.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+
+    @RenderSection("head", required: false)
+</head>
+<body style="direction:rtl">
+    <div class="Loading" style="/*display:none;*/z-index:100;position:fixed;top:0;background-color:rgba(0, 0, 0, 0.90);width:100%;height:100%;text-align:center;text-shadow:0 0 1em;"><img style="display:block;margin:20% auto auto auto;max-height:30%;max-width:60%;" src="~/Content/Loading.gif" /><br />در حال بارگذاری...</div>
+    <header>
+        <h1>@MusicProduction.App_Code.About.ApplicationTitle</h1>
+        <h2>@ViewBag.Title</h2>
+        <img class="Logo" src="~/Logo.png" />
+        <div class="Menu">
+            <a href="~/Home/Index">خانه</a>
+            @if (Session["Username"] == null)
+            {
+                <a href="~/Log/In">ورود به سیستم</a>
+            }
+            else
+            {
+                <a href="~/Log/Out">خروج از سیستم</a>
+            }
+            <a href="~/Documents/Purchase">سفارش محصول</a>
+        </div>
+        @RenderSection("header", required: false)
+    </header>
+    @if (ViewBag.Message != null)
+    {
+        <div class="Message" id="Message">
+            @ViewBag.Message
+        </div>
+    }
+    </div>
+    <div class="Content" id="Content">
+        @RenderBody()
+    </div>
+
+    <script type="text/javascript">
+        $(".rslides").responsiveSlides({
+            auto: true,             // Boolean: Animate automatically, true or false
+            speed: 500,            // Integer: Speed of the transition, in milliseconds
+            timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+            pager: false,           // Boolean: Show pager, true or false
+            nav: false,             // Boolean: Show navigation, true or false
+            random: false,          // Boolean: Randomize the order of the slides, true or false
+            pause: false,           // Boolean: Pause on hover, true or false
+            pauseControls: false,    // Boolean: Pause when hovering controls, true or false
+            prevText: "قبلی",   // String: Text for the "previous" button
+            nextText: "بعدی",       // String: Text for the "next" button
+            maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+            navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+            manualControls: ".rslides_tabs",     // Selector: Declare custom pager navigation
+            namespace: "rslides",   // String: Change the default namespace used
+            before: function () { },   // Function: Before callback
+            after: function () { }     // Function: After callback
+        });
+
+        $(document).ready(function () {
+            $('.Loading').hide();
+        });
+        $('#Message').fadeOut(10000);
+        $(function () {
+            $('.html').froalaEditor()
+        });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/floara/js/froala_editor.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/char_counter.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/code_beautifier.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/code_view.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/colors.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/draggable.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/emoticons.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/entities.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/file.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/font_size.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/font_family.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/fullscreen.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/image.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/image_manager.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/line_breaker.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/inline_style.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/link.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/lists.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/paragraph_format.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/paragraph_style.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/quick_insert.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/quote.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/table.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/save.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/url.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/video.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/help.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/print.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/special_characters.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/floara/js/plugins/word_paste.min.js"></script>
+
+
+    <script src="~/Scripts/_Application/_Layout.js"></script>
+    <script src="~/Scripts/_Application/@_ControllerJs"></script>
+    @if (_ActionJs != ".js")
+    {
+        <script src="~/Scripts/_Application/@_Controller/@_ActionJs"></script>
+        if (_IdJs != ".js")
+        {
+            <script src="~/Scripts/_Application/@_Controller/@_Action/@_IdJs"></script>
+        }
+    }
+
+    @RenderSection("scripts", required: false)
+
+    <footer>
+        @RenderSection("footer", required: false)
+    </footer>
+</body>
+</html>

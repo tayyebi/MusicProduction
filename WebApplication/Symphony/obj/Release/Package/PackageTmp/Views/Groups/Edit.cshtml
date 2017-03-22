@@ -1,0 +1,9 @@
+﻿@model MusicProduction.Models.Group
+@{ 
+    ViewBag.Title = "ویرایش";
+}
+@Html.ActionLink("بازگشت", "Index")
+<form method="post">
+    <input type="text" name="Name" value="@Model.عنوان"/>
+    <input type="submit" value="تغییر نام"/>
+</form>

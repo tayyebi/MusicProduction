@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MusicProduction.Models.Image>
+@{
+    ViewBag.Title = "عکس ها";
+}
+@Html.ActionLink("ارسال", "Create", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+@try
+{
+    if (HttpContext.Current.Request.QueryString["Product"] != null)
+    {
+        @Html.ActionLink("ارسال تصویر برای محصول", "Create", new { Product = HttpContext.Current.Request.QueryString["Product"] })
+    }
+}
+catch { }
+@try
+{
+    if (HttpContext.Current.Request.QueryString["Post"] != null)
+    {
+        @Html.ActionLink("ارسال تصویر برای پست", "Create", new { Product = HttpContext.Current.Request.QueryString["Post"] })
+    }
+}
+catch { }
+@foreach (var item in Model)
+{
+    <div>
+        <h3>@Html.DisplayFor(modelItem => item.Id)</h3>
+        <h4>@Html.DisplayFor(modelItem => item.عکس)</h4>
+        <img src="~/Documents/Download/@item.Id" />
+        @Html.ActionLink("ویرایش", "Edit", new { id = item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+        @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+    </div>
+}

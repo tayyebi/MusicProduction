@@ -1,0 +1,15 @@
+﻿@model Post
+@{
+    ViewBag.Title = "پیش نمایش: " + Model.عنوان;
+}
+@Html.ActionLink("بازگشت", "Index")
+<label>عنوان</label>
+<p>@Model.عنوان</p>
+
+<label>چکیده</label>
+<p>@Model.چکیده</p>
+
+<label>متن</label>
+<div>
+    @Html.Raw(Model.متن)
+</div>

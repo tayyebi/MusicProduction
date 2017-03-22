@@ -1,0 +1,50 @@
+﻿.subGroup, .thumb, .description, .posts {
+    display: block;
+}
+.posts {
+    min-width: 15em;
+}   
+
+.description, .posts {
+    max-width: 60%;
+    margin: 0 auto 0 auto;
+    background-color: white;
+}
+
+.subGroup {
+    font-size: large;
+    text-align: center;
+}
+
+.thumb {
+    width: 20%;
+    min-width:15em;
+    margin: 10% auto 10% auto;
+    box-shadow:0 0 1em #000000;
+    border-radius: .2em;
+}
+.posts span{
+    display:block;
+    text-align:center;
+    background-color: #d1d1d1;
+}
+.post{
+}
+.post > a{
+    background:none;
+    border:none;
+}
+.title{
+    text-align:center;
+}
+.post .title, .post .title:hover ,.post .title:active ,.post .title:focus{
+    background-color:azure;
+        font-size: 150%;
+    text-align: center;
+
+}
+.post .date{
+    display:block;
+    text-align:center;
+    margin-top:-2em;
+}

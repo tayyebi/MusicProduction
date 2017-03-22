@@ -1,0 +1,44 @@
+﻿.Message {
+    text-align: center;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    color:#00ffff;
+    top:0;
+    box-shadow:0 0 .1em #ff0000;
+    font-size:2em;
+    margin-top:1em;
+    padding:.5em;
+    z-index:100;
+    /*
+    -webkit-animation: seconds 1.0s forwards;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 5s;
+    animation: seconds 1.0s forwards;
+    animation-iteration-count: 1;
+    animation-delay: 3s;
+    */
+    background-color:#ff0000;
+}
+@-webkit-keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+   50%{
+    opacity:0;
+  }
+  100% {
+    bottom:-3000%;
+  }
+}
+@keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  50%{
+    opacity:0;
+  }
+  100% {
+    bottom:-3000%;
+  }
+}

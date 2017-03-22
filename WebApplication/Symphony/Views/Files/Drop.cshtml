@@ -1,0 +1,9 @@
+﻿@model MusicProduction.Models.File
+@{
+    ViewBag.Title = "حذف";
+}
+@Html.ActionLink("بازگشت", "Index")
+<form method="post">
+    <input value="@Model.عنوان" readonly />
+    <input type="submit" value="حذف این پرونده" />
+</form>

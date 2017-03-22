@@ -1,0 +1,20 @@
+﻿@model MusicProduction.Models.Post
+@{
+    ViewBag.Title = "ایجاد";
+}
+@Html.ActionLink("بازگشت", "Index")
+<form method="post" enctype="multipart/form-data">
+    <label for="Title">عنوان</label>
+    <input type="text" name="Title" />
+
+    <label for="Abstract">چکیده</label>
+    <input type="text" name="Abstract" />
+
+    <label for="body">متن</label>
+    <textarea name="Body"></textarea>
+
+    <label for="SubGroup">زیر گروه</label>
+    @Helpers.SubGroups("SubGroup")
+
+    <input type="submit" value="ارسال" />
+</form>

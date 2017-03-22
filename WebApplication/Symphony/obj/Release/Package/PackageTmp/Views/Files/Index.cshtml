@@ -1,0 +1,15 @@
+﻿@model IEnumerable<MusicProduction.Models.File>
+@{
+    ViewBag.Title = "فایل ها";
+}
+@Html.ActionLink("بارگزاری", "Upload", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+@foreach (var item in Model)
+{
+    <div>
+        <h3>@Html.DisplayFor(modelItem => item.Id)</h3>
+        <h4>@Html.DisplayFor(modelItem => item.عنوان)</h4>
+        @Html.ActionLink("دانلود", "Download", new { controller = "Documents", id = item.Id })
+        @Html.ActionLink("ویرایش", "Update", new { id = item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+        @Html.ActionLink("حذف", "Drop", new { id = item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Dynamic", OnComplete = "JsDynamic()" })
+    </div>
+}

@@ -1,0 +1,9 @@
+﻿@model SubGroup
+@{ 
+    ViewBag.Title = "ویرایش";
+}
+@Html.ActionLink("بازگشت", "Index", new { group = HttpContext.Current.Request.QueryString["group"] })
+<form method="post">
+    <input type="text" name="Name" value="@Model.زیر_گروه"/>
+    <input type="submit" value="تغییر نام"/>
+</form>
